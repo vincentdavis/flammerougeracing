@@ -26,6 +26,7 @@ class HomeView( TemplateView):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('apps.FRRacing.urls')),
+    path('accounts/', include('apps.accounts.urls')),
     path('', HomeView.as_view())
 
 ]

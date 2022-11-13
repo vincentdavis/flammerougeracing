@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'apps.FRRacing'
+    'apps.FRRacing',
+    'apps.accounts'
 ]
 
 MIDDLEWARE = [
@@ -168,7 +169,7 @@ if DEBUG:
 
 
 # Static URL
-    STATIC_URL = '/FRR/static/'
+    STATIC_URL = '/accounts/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, "static/")
     # All Static Paths
     STATICFILES_DIRS = [
