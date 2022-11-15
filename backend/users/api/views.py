@@ -2,12 +2,26 @@ from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
-from .serializers import UserSerializer
+from .serializers import UserSerializer, SignupSerializer
 
 User = get_user_model()
+
+# Open API
+
+class SignupView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        ser = SignupSerializer(data=request.data)
+        if (ser.is_valid(raise_exception=True)):
+            ser.save()
+            return Response(ser.data)
+
 
 
 class UserViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
