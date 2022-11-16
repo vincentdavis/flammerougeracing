@@ -9,16 +9,16 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["username", "name", "url"]
 
-        extra_kwargs = {
-            "url": {"view_name": "api:user-detail", "lookup_field": "username"}
-        }
+        # extra_kwargs = {
+        #     "url": {"view_name": "api:user-detail", "lookup_field": "username"}
+        # }
 
 
 class SignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name"]
+        fields = ["email", "first_name", "last_name", "gender", "race_category", "password"]
 
         extra_kwargs = {
-            "url": {"view_name": "api:user-detail", "lookup_field": "username"}
+            "url": {"view_name": "api:user-detail", "lookup_field": "email"}
         }
