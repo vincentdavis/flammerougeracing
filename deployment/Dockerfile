@@ -47,10 +47,11 @@ COPY default.conf /home/jenkins/
 WORKDIR /home/jenkins/
 
 USER root
-
+RUN ls
 RUN pip install -r ./requirements/production.txt
 
 RUN pip install uwsgi
+
 
 RUN git config --global credential.helper store
 
