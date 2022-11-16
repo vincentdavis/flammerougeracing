@@ -48,7 +48,7 @@ WORKDIR /home/jenkins/
 
 USER root
 RUN ls
-RUN pip install -r ./requirements/production.txt
+RUN pip install -r production.txt
 
 RUN pip install uwsgi
 
