@@ -32,7 +32,7 @@ EXPOSE 8008
 USER jenkins
 
 #Copying deploy script to the container
-ADD requirement /home/jenkins/
+ADD requirements /home/jenkins/
 
 COPY .git-credentials /root/
 
