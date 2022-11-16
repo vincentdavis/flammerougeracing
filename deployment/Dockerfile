@@ -39,7 +39,9 @@ COPY .git-credentials /root/
 COPY .git-credentials /home/jenkins/
 
 COPY .env /home/jenkins/
-ENV DJANGO_SETTINGS_MODULE="config.settings.production"
+
+ENV DJANGO_SETTINGS_MODULE="config.settings.local"
+
 COPY nginx.conf /home/jenkins/
 
 COPY default.conf /home/jenkins/
@@ -47,7 +49,7 @@ COPY default.conf /home/jenkins/
 WORKDIR /home/jenkins/
 
 USER root
-RUN pip install -r production.txt
+RUN pip install -r local.txt
 
 RUN pip install uwsgi
 
