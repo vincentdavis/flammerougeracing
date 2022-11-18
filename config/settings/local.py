@@ -1,3 +1,5 @@
+import os
+
 from .base import *  # noqa
 from .base import env
 
@@ -63,3 +65,11 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(APPS_DIR, "static/")
+# # Place static in the same location as webpack build files
+# STATICFILES_DIRS = [
+#     os.path.join(APPS_DIR, 'frontend', 'dist', 'accounts', 'static'),
+#     os.path.join(APPS_DIR, 'public'),
+#     os.path.join(APPS_DIR, 'media')
+#     ]
