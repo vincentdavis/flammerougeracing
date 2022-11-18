@@ -9,6 +9,7 @@ sudo cp -rf ../default.conf  /etc/nginx/sites-available/default
 cp ../.env /home/jenkins/frr/
 pip install uwsgi
 #python manage.py collectstatic
+python manage.py migrate
 
 # Restart nginx
 sudo /etc/init.d/nginx start || sudo /etc/init.d/nginx start
