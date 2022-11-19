@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar color="white" elevation="0" app>
+      <v-toolbar-title style="cursor:pointer" @click="$router.push({name: 'home'})">Flamme Rouge Racing</v-toolbar-title>
+
+      <v-text-field
+        clearable
+        class="ma-5"
+        placeholder="Search for races"
+        filled
+        hide-details
+        rounded
+        dense
+        prepend-inner-icon="mdi-magnify"
+      ></v-text-field>
+
+      <v-spacer></v-spacer>
+      <v-avatar
+        class="hidden-sm-and-down"
+        color="grey darken-1 shrink"
+        size="32"
+      ></v-avatar>
+    </v-app-bar>
+
+    <v-main>
+      <!-- <v-banner dense v-model="v0" single-line
+        >Notification Banner
+        <template v-slot:actions>
+          <v-btn
+            text
+            transition="slide-y-transition"
+            small
+            color="primary"
+            class="text-capitalize"
+          >
+            Banner action
+          </v-btn>
+          <v-btn small color="red" @click="v0 = false" icon
+            ><v-icon>mdi-close</v-icon></v-btn
+          >
+        </template>
+      </v-banner> -->
+
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: "App",
 
-nav {
-  padding: 30px;
+  data: () => ({
+    v0: true,
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+    //
+  }),
+};
+</script>

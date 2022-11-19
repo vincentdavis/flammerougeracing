@@ -65,11 +65,15 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(APPS_DIR, "static/")
-# # Place static in the same location as webpack build files
-# STATICFILES_DIRS = [
-#     os.path.join(APPS_DIR, 'frontend', 'dist', 'accounts', 'static'),
-#     os.path.join(APPS_DIR, 'public'),
-#     os.path.join(APPS_DIR, 'media')
-#     ]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, "static/")
+# Place static in the same location as webpack build files
+STATICFILES_DIRS = [
+    os.path.join(ROOT_DIR, 'backend', 'accounts-temp' ),
+    os.path.join(ROOT_DIR, 'frontend', 'dist' ,'static'),
+    os.path.join(ROOT_DIR, 'frontend', 'dist'),
+    os.path.join(ROOT_DIR, 'frontend', 'public'),
+    ]
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = True
