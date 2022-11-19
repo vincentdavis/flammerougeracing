@@ -5,6 +5,6 @@ from apps.events.api.serailizers import RacesSerializers
 from apps.events.models import Races
 
 
-class RacesVieSet(RetrieveModelMixin,CreateModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
+class RaceAPI(RetrieveModelMixin, ListModelMixin, GenericViewSet):
     serializer_class = RacesSerializers
     queryset = Races.objects.all()

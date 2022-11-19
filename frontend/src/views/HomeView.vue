@@ -4,15 +4,18 @@
       <v-card elevation="0">
         <v-card-text>
           <v-carousel
-            :continuous="true"
-            :cycle="cycle"
+            :continuous="false"
+            :cycle="true"
             :show-arrows="true"
-            hide-delimiter-background
-            delimiter-icon="mdi-minus"
             height="300"
           >
-            <v-carousel-item v-for="(slide, i) in getters_races" :key="i">
-              <v-img :src="slide.logo"></v-img>
+            <v-carousel-item
+              reverse-transition="fade-transition"
+              transition="fade-transition"
+              v-for="(slide, i) in getters_races"
+              :key="i"
+            >
+              <v-img contain :src="slide.logo"> </v-img>
               <!-- <v-sheet :color="colors[i]" height="100%" tile>
                 <v-row class="fill-height" align="center" justify="center">
                   <div class="text-h2">{{ slide }} event image</div>
@@ -26,9 +29,15 @@
     <v-col class="mt-0 pt-0" cols="12" sm="12">
       <v-card class="pt-0 mt-0 ma-4" elevation="0">
         <v-card-title class="mt-0 pt-0"
-          >Races
+          ><h3>Race Starting Soon...</h3>
           <v-spacer></v-spacer>
-          <v-btn title text color="primary" @click="$router.push({name: 'series'})">View All</v-btn>
+          <v-btn
+            title
+            text
+            color="primary"
+            @click="$router.push({ name: 'series' })"
+            >View All</v-btn
+          >
         </v-card-title>
         <v-card-text>
           <events_home></events_home>
@@ -54,12 +63,12 @@ export default {
         "red lighten-2",
         "orange darken-1",
       ],
-      cycle: true,
       slides: ["First", "Second", "Third", "Fourth", "Fifth"],
     };
   },
   mounted() {
     // Get Races
+    this.get_races();
   },
   methods: {},
 };

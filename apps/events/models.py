@@ -14,3 +14,5 @@ class Races(models.Model):
     end_date = models.DateField()
     description = models.TextField()
     logo = models.FileField()
+    slider_logo = models.FileField()
+    small_logo = models.FileField()

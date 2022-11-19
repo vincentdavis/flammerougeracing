@@ -1,13 +1,21 @@
 <template>
   <v-app>
     <v-app-bar color="white" elevation="0" app>
-      <v-toolbar-title style="cursor:pointer" @click="$router.push({name: 'home'})">Flamme Rouge Racing</v-toolbar-title>
-
+      <!-- <v-toolbar-title style="cursor:pointer" @click="$router.push({name: 'home'})">Flamme Rouge Racing</v-toolbar-title> -->
+      <v-img
+        style="cursor: pointer"
+        @click="$router.push({ name: 'home' })"
+        max-height="53"
+        max-width="250"
+        src="@/assets/FRR.png"
+      ></v-img>
       <v-text-field
         clearable
+        width="30"
+        color="primary"
         class="ma-5"
         placeholder="Search for races"
-        filled
+        outlined
         hide-details
         rounded
         dense
@@ -41,7 +49,13 @@
         </template>
       </v-banner> -->
 
-      <router-view />
+      <transition
+      name="scale-transition"
+      mode="out-in"
+      appear
+    >
+      <router-view></router-view>
+    </transition>
     </v-main>
   </v-app>
 </template>
