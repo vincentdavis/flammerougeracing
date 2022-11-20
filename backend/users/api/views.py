@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.decorators import action
@@ -42,3 +43,11 @@ class UserViewSet(RetrieveModelMixin,CreateModelMixin, ListModelMixin, UpdateMod
     def me(self, request):
         serializer = UserSerializer(request.user, context={"request": request})
         return Response(status=status.HTTP_200_OK, data=serializer.data)
+
+    @action(detail=False, methods=['POST'])
+    def zwift_link(self, request):
+        get_token = requests.get(f'https://z00pbp8lig.execute-api.us-west-1.amazonaws.com/latest/zwiftId?username='+request.data.get('user_id')+'&pw='+request.data.get('user_password'))
+        user = request.user
+        user.zwift_id = get_token.json()
+        user.save()
+        return Response(status=status.HTTP_200_OK, data={'status': 'Success'})
