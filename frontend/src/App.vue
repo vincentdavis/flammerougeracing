@@ -28,11 +28,12 @@
       ></v-text-field>
 
       <v-spacer></v-spacer>
-
+      <v-btn rounded small color="primary"> Create Race</v-btn>
       <profile></profile>
     </v-app-bar>
 
     <v-main v-if="!main_loader">
+      <!-- Zwift Validation -->
       <v-banner v-if="!profile.zwift_id" dense v-model="v0" single-line
         ><v-icon slot="icon" color="warning" size="36">
           mdi-alert-circle
@@ -54,7 +55,9 @@
           >
         </template>
       </v-banner>
+      <!-- Link Zwift Modal -->
       <link_zwift_account></link_zwift_account>
+      
       <transition name="scroll-x-transition" mode="out-in" appear>
         <router-view></router-view>
       </transition>

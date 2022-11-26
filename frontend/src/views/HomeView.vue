@@ -1,12 +1,26 @@
 <template>
   <v-row>
     <v-col cols="12" sm="12">
-      <v-card elevation="0">
+      <v-card
+        elevation="0"
+        style="
+          background: #e3f2fd;
+          background: -webkit-linear-gradient(
+            to top,
+            #ffffff,
+            #ffffff,
+            #bbdefb
+          );
+          background: linear-gradient(to top, #ffffff, #ffffff, #bbdefb);
+        "
+      >
         <v-card-text>
           <v-carousel
             :continuous="false"
             :cycle="true"
-            :show-arrows="true"
+            hide-delimiter-background
+            delimiter-icon="mdi-minus"
+            :show-arrows="false"
             height="300"
           >
             <v-carousel-item
@@ -29,7 +43,7 @@
     <v-col class="mt-0 pt-0" cols="12" sm="12">
       <v-card class="pt-0 mt-0 ma-4" elevation="0">
         <v-card-title class="mt-0 pt-0"
-          ><h3>Race Starting Soon...</h3>
+          ><h3>Race Series Starting Soon...</h3>
           <v-spacer></v-spacer>
           <v-btn
             title

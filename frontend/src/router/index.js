@@ -20,7 +20,21 @@ const routes = [
   {
     path: '/race_series/:id',
     name: 'race_series_detail',
-    component: EventDetailView
+    component: EventDetailView,
+    children: [
+      {
+        path: '/race_series/:id/race_detail',
+        name: 'race-details',
+        component: () => import('@/views/RaceDetails'),
+       
+      },
+      {
+        path: '/race_series/:id/races',
+        name: 'races',
+        component: () => import('@/views/Races.vue'),
+       
+      },
+    ]
   },
   {
     path: '*',

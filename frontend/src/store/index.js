@@ -38,6 +38,18 @@ export default new Vuex.Store({
     zwift_link_modal({commit}, status){
       commit('mutation_zwift_link_modal', status)
     },
+    API({ commit }, payload) {
+      commit
+      return new Promise((resolve, reject) => {
+        axiosIns(payload.api + payload.query_params)
+          .then(data => {
+            resolve(data)
+          })
+          .catch(err => {
+            reject(err)
+          })
+      })
+    },
     link_zwifit({commit}, payload){
 
       return new Promise((resolve, reject) => {
@@ -58,8 +70,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit
         axiosIns.get('/api/users/me/')
-        .then(data => {
-          commit('mutation_profile', data.data)
+        .then(data => { commit('mutation_profile', data.data)
           resolve(data)
         })
         .catch(err => {
@@ -73,7 +84,7 @@ export default new Vuex.Store({
 
       return new Promise((resolve, reject) => {
         commit
-        axiosIns.get('/api/race/')
+        axiosIns.get('/api/raceseries/')
         .then(data => {
           commit('mutation_race_loader', false)
           commit('mutation_races', data.data)
@@ -91,7 +102,41 @@ export default new Vuex.Store({
 
       return new Promise((resolve, reject) => {
         commit
-        axiosIns.get('/api/race/'+query)
+        axiosIns.get('/api/raceseries/'+query)
+        .then(data => {
+          commit('mutation_race_loader', false)
+          resolve(data)
+        })
+        .catch(err => {
+          commit('mutation_race_loader', false)
+
+          reject(err)
+        })
+      }) 
+    },
+    racesAPI({commit}, query){
+      commit('mutation_race_loader', true)
+
+      return new Promise((resolve, reject) => {
+        commit
+        axiosIns.get('/api/races/'+query)
+        .then(data => {
+          commit('mutation_race_loader', false)
+          resolve(data)
+        })
+        .catch(err => {
+          commit('mutation_race_loader', false)
+
+          reject(err)
+        })
+      }) 
+    },
+    zwift_resultAPI({commit}, query){
+      commit('mutation_race_loader', true)
+
+      return new Promise((resolve, reject) => {
+        commit
+        axiosIns.get('/api/zwift_result/'+query)
         .then(data => {
           commit('mutation_race_loader', false)
           resolve(data)
