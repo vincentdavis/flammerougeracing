@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-overlay :value="main_loader" absolute>
+    <v-overlay :value="main_loader" app absolute>
       <v-progress-circular indeterminate size="25"></v-progress-circular>
       Loading FRR
     </v-overlay>
 
-    <v-app-bar v-if="!main_loader" color="white" elevation="0" app>
+    <v-app-bar dense v-if="!main_loader" color="white" elevation="0" app>
       <!-- <v-toolbar-title style="cursor:pointer" @click="$router.push({name: 'home'})">Flamme Rouge Racing</v-toolbar-title> -->
       <v-img
         style="cursor: pointer"
@@ -28,7 +28,7 @@
       ></v-text-field>
 
       <v-spacer></v-spacer>
-      <v-btn rounded small color="primary"> Create Race</v-btn>
+      <!-- <v-btn rounded small color="primary"> Create Race</v-btn> -->
       <profile></profile>
     </v-app-bar>
 
@@ -73,7 +73,9 @@ import link_zwift_account from "@/components/link_zwift_account.vue";
 export default {
   mixins: [Index],
   name: "App",
-  components: { profile, link_zwift_account },
+  components: { profile, 
+  link_zwift_account 
+  },
   data: () => ({
     v0: true,
     main_loader: true,

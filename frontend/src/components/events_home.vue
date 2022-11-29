@@ -32,8 +32,14 @@
                 {{ race.name }}
               </v-list-item-title>
               <v-list-item-subtitle
+              v-if="race.start_time"
                 >Starts in
-                <b style="color: red">{{ race.time }}</b></v-list-item-subtitle
+                <b style="color: red">{{ race.start_time }}</b></v-list-item-subtitle
+              >
+              <v-list-item-subtitle
+              v-if="race.end_time"
+                >Ending in
+                <b style="color: red">{{ race.end_time }}</b></v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>
@@ -64,44 +70,17 @@ export default {
   computed: {},
   methods: {
     startTimer: function () {
-      for (var event of this.getters_races) {
-        event.time = this.caculate_time(event.start_date);
-        //   this.timerOutput =
-        //     remainingDays +
-        //     " Days " +
-        //     remainingHours +
-        //     " Hrs " +
-        //     remainingMinutes +
-        //     " Min " +
-        //     remainingSeconds +
-        //     " Sec";
+      try{
+        for (var event of this.getters_races) {
+          // console.log(this.caculate_time(event.start_date))
+          event.start_time = this.caculate_time(event.start_date)
+          if (!this.caculate_time(event.start_date)){
+            event.end_time = this.caculate_time(event.end_date)
+
+          }
+        }
       }
-      //   const timeNow = new Date().getTime();
-      //   const timeDifference = new Date("Nov 22, 2022 21:00:00").getTime() - timeNow;
-      //   const millisecondsInOneSecond = 1000;
-      //   const millisecondsInOneMinute = millisecondsInOneSecond * 60;
-      //   const millisecondsInOneHour = millisecondsInOneMinute * 60;
-      //   const millisecondsInOneDay = millisecondsInOneHour * 24;
-      //   const differenceInDays = timeDifference / millisecondsInOneDay;
-      //   const remainderDifferenceInHours =
-      //     (timeDifference % millisecondsInOneDay) / millisecondsInOneHour;
-      //   const remainderDifferenceInMinutes =
-      //     (timeDifference % millisecondsInOneHour) / millisecondsInOneMinute;
-      //   const remainderDifferenceInSeconds =
-      //     (timeDifference % millisecondsInOneMinute) / millisecondsInOneSecond;
-      //   const remainingDays = Math.floor(differenceInDays);
-      //   const remainingHours = Math.floor(remainderDifferenceInHours);
-      //   const remainingMinutes = Math.floor(remainderDifferenceInMinutes);
-      //   const remainingSeconds = Math.floor(remainderDifferenceInSeconds);
-      //   this.timerOutput =
-      //     remainingDays +
-      //     " Days " +
-      //     remainingHours +
-      //     " Hrs " +
-      //     remainingMinutes +
-      //     " Min " +
-      //     remainingSeconds +
-      //     " Sec";
+      catch(err){err}
     },
   },
 };

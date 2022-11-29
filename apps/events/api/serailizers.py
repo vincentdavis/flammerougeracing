@@ -4,7 +4,11 @@ from apps.events.models import Races, RaceSeries, ZwiftResult
 
 
 class RaceSeriesSerializers(serializers.ModelSerializer):
+    start_time = serializers.SerializerMethodField(method_name="get_time")
+    end_time = serializers.SerializerMethodField(method_name="get_time")
 
+    def get_time(self, value):
+        return ''
     class Meta:
         model = RaceSeries
         fields = '__all__'
@@ -60,7 +64,10 @@ class RaceSeriesSerializersReadOnly(serializers.ModelSerializer):
         fields = '__all__'
 
 class RacesSerializers(serializers.ModelSerializer):
-
+    timer = serializers.SerializerMethodField(method_name="get_time")
+    start_time_format = serializers.DateTimeField(format="%d %b %I:%M %p", source='start_time')
+    def get_time(self, value):
+        return  ""
     class Meta:
         model = Races
         fields = '__all__'

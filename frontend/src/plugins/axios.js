@@ -1,22 +1,21 @@
 // axios
 import axios from 'axios'
 import Vue from 'vue'
+// const  BackendAPi = process.env.VUE_APP_Backed_API
 
 const axiosIns = axios.create({
   // You can add your headers here
   // ================================
-  // baseURL: 'http://localhost:8000/',
+  // baseURL: BackendAPi ? BackendAPi : '',
   withCredentials: true
   // timeout: 1000,
   // headers: {'X-Custom-Header': 'foobar'}
 })
 
 function getCookie(name) {
-  console.log(decodeURIComponent(document.cookie))
   if (!document.cookie) {
     return null;  
   }
-  console.log(document.cookie.split(';'))
   const xsrfCookies = document.cookie.split(';')
     .map(c => c.trim())
     .filter(c => c.startsWith(name + '='));

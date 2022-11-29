@@ -43,7 +43,7 @@
     <v-col class="mt-0 pt-0" cols="12" sm="12">
       <v-card class="pt-0 mt-0 ma-4" elevation="0">
         <v-card-title class="mt-0 pt-0"
-          ><h3>Race Series Starting Soon...</h3>
+          ><h3>Race Series</h3>
           <v-spacer></v-spacer>
           <v-btn
             title
