@@ -24,7 +24,7 @@ class RaceSeries(models.Model):
 
 
 class Races(models.Model):
-    race_series = models.ForeignKey(RaceSeries, on_delete=models.CASCADE,null=True, blank=True)
+    race_series = models.ForeignKey(RaceSeries, on_delete=models.CASCADE,null=True, blank=True, related_name='races')
     name = models.CharField(max_length=200)
     zwift_id = models.IntegerField()
     start_time = models.DateTimeField()

@@ -8,8 +8,8 @@ if settings.DEBUG:
 else:
     router = SimpleRouter()
 
-router.register("raceseries", RaceSeriesAPI)
-router.register("races", RaceAPI)
+router.register("race_series", RaceSeriesAPI)
+router.register("race", RaceAPI)
 router.register("zwift_result", ZwiftResultAPI)
 
 urlpatterns = router.urls

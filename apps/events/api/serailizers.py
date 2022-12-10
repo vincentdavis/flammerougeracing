@@ -1,4 +1,5 @@
 from rest_framework import serializers
+import  datetime as datatimeas
 
 from apps.events.models import Races, RaceSeries, ZwiftResult
 
@@ -13,6 +14,17 @@ class RaceSeriesSerializers(serializers.ModelSerializer):
         model = RaceSeries
         fields = '__all__'
 
+
+class ZwiftResultSerializersMin(serializers.ModelSerializer):
+    total_time = serializers.SerializerMethodField()
+    total_race_partipated = serializers.SerializerMethodField()
+    def get_total_time(self, value):
+        return str(datatimeas.timedelta(seconds=float(value.total_time)))
+    def get_total_race_partipated(self, value):
+        return str(value.total_race_partipated)
+    class Meta:
+        model = ZwiftResult
+        fields = ['name', 'total_time', 'total_race_partipated']
 
 class ZwiftResultSerializers(serializers.ModelSerializer):
     zwift_id = serializers.IntegerField(required=False)

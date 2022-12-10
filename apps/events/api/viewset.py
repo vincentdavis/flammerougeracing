@@ -1,12 +1,16 @@
 from typing import Any
 
+from django.db.models import QuerySet, Count, Sum, FloatField
+from django.db.models.functions import Cast
+from rest_framework.decorators import action
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin, CreateModelMixin
+from rest_framework.response import Response
 from rest_framework.serializers import BaseSerializer
 from rest_framework.viewsets import GenericViewSet
 
 from apps.events.api.pagination import StandardResultsSetPagination
 from apps.events.api.serailizers import RaceSeriesSerializers, RaceSeriesSerializersReadOnly, RacesSerializers, \
-    ZwiftResultSerializers
+    ZwiftResultSerializers, ZwiftResultSerializersMin
 from apps.events.models import Races, RaceSeries, ZwiftResult
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -27,9 +31,28 @@ def generate_fields(view, model, includeactions=False, defaultView=[]):
         print("Exception", str(e))
         return []
 
+
 class RaceSeriesAPI(RetrieveModelMixin, ListModelMixin, GenericViewSet):
     serializer_class = RaceSeriesSerializersReadOnly
     queryset = RaceSeries.objects.all()
+
+    @action(methods=['GET'], detail=True)
+    def races(self, request, pk):
+        obj = self.get_object()
+        return Response(RacesSerializers(obj.races.all(), many=True).data)
+
+    @action(methods=['GET'], detail=True, url_path='results/point_based')
+    def points_based(self, request, pk):
+        obj = self.get_object()
+        return Response("Points")
+
+    @action(methods=['GET'], detail=True, url_path='results/time_based')
+    def time_based(self, request, pk):
+        obj = self.get_object()
+        zwift_id = obj.races.all().values_list('zwift_id')
+        time_base_result = ZwiftResult.objects.filter(zwift_id__in=zwift_id).annotate(total_time=Sum(Cast('time_gun', FloatField()))).order_by('total_time').annotate(total_race_partipated=Count('zwift_id'))
+        print(time_base_result.count())
+        return Response(ZwiftResultSerializersMin(time_base_result, many=True).data)
 
     def get_serializer_class(self, *args, **kwargs):
         if self.request.method == 'POST':
@@ -41,7 +64,12 @@ class RaceAPI(RetrieveModelMixin, ListModelMixin, GenericViewSet):
     serializer_class = RacesSerializers
     queryset = Races.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['race_series',]
+    filterset_fields = ['race_series', ]
+
+    @action(methods=['GET'], detail=True)
+    def result(self, request,  pk):
+        obj = self.get_object()
+        return Response(ZwiftResultSerializers(ZwiftResult.objects.filter(zwift_id=obj.zwift_id), many=True).data)
 
     def get_serializer_class(self, *args, **kwargs):
         if self.request.method == 'POST':
