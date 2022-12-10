@@ -119,7 +119,7 @@ export default new Vuex.Store({
 
       return new Promise((resolve, reject) => {
         commit
-        axiosIns.get('/api/races/'+query)
+        axiosIns.get('/api/race/'+query)
         .then(data => {
           commit('mutation_race_loader', false)
           resolve(data)
