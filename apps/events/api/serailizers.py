@@ -18,10 +18,10 @@ class RaceSeriesSerializers(serializers.ModelSerializer):
 class ZwiftResultMin(serializers.Serializer):
     name= serializers.CharField()
     total_time = serializers.SerializerMethodField()
-    total_race_participated = serializers.SerializerMethodField()
+    total_races = serializers.SerializerMethodField()
     def get_total_time(self, value):
         return str(datatimeas.timedelta(seconds=float(value['total_time'])))
-    def get_total_race_participated(self, value):
+    def get_total_races(self, value):
         return str(value['total_race_participated'])
 
 
