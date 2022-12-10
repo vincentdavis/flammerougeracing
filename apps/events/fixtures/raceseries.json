@@ -1,0 +1,15 @@
+ [
+   {
+        "model": "events.raceseries",
+        "pk": 1,
+        "fields": {
+            "name": "Tour Britannia - Nov 26",
+            "start_date": "2022-11-26",
+            "end_date": "2022-12-04",
+            "description": "New Rider Registration is Open all Tour France riders are registered and each Club will need at least one manager to be that contact point. Tour Britannia kicks off very soon and is quickly followed by Tour Watopia on Jan 2nd - so get those legs ready for a great start to 2023.",
+            "logo": "FRR-Tour-Britannia_wuOVlHW.png",
+            "slider_logo": "FRR-Tour-Britannia_ApDat3P.png",
+            "small_logo": "FRR-Tour-Britannia_EDL1klK.png"
+        }
+    }
+ ]
