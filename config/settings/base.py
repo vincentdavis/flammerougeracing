@@ -88,7 +88,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "backend.users",
-    "apps.events"
+    "apps.events",
+    "apps.Setup"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

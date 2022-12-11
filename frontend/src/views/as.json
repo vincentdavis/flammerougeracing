@@ -1,0 +1,676 @@
+[
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3255985,
+              "start_time": "2022-11-26T00:15:00Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256003,
+              "start_time": "2022-12-10T17:04:57Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256005,
+              "start_time": "2022-12-10T17:05:32Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256006,
+              "start_time": "2022-12-10T17:05:59Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256008,
+              "start_time": "2022-12-10T17:06:20Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256010,
+              "start_time": "2022-12-10T17:06:39Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256012,
+              "start_time": "2022-12-10T17:06:58Z"
+          }
+      },
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 1",
+              "zwift_id": 3256013,
+              "start_time": "2022-12-10T17:07:15Z"
+          }
+      }
+  ,
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256032,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256034,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256035,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256036,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256037,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256039,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256040,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 2",
+              "zwift_id": 3256041,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256043,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256044,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256045,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256046,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256047,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256048,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256049,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 3",
+              "zwift_id": 3256051,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256209,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256210,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256212,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256215,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256218,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256221,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256222,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 4",
+              "zwift_id": 3256223,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256228,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256230,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256231,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256233,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256234,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256235,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256237,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 5",
+              "zwift_id": 3256239,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256243,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256249,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256250,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256252,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256253,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256254,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256256,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 6",
+              "zwift_id": 3256259,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256262,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256268,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256270,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256272,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256273,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256274,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256275,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 7",
+              "zwift_id": 3256276,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+  
+  
+  
+  
+      {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256279,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256280,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  ,
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256282,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256284,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256285,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256287,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256288,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      },
+    {
+          "model": "events.races",
+          
+          "fields": {
+              "race_series": 1,
+              "name": "FRR Tour Britannia - Stage 8",
+              "zwift_id": 3256289,
+              "start_time": "2022-12-10T17:52:57Z"
+          }
+      }
+  
+  ]

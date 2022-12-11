@@ -1,52 +1,51 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Series from '../views/SeriesView.vue'
-import HomeView from '../views/HomeView.vue'
-import EventDetailView from '../views/EventDetailView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    redirect: 'home',
+  },
+  {
+    path: '/home',
     name: 'home',
-    component : HomeView
+    component: () => import('@/views/Home.vue'),
+    meta: {
+      layout: 'content',
+    },
   },
   {
-    path: '/race_series',
-    name: 'series',
-    component: Series
+    path: '/second-page',
+    name: 'second-page',
+    component: () => import('@/views/SecondPage.vue'),
+    meta: {
+      layout: 'content',
+    },
   },
   {
-    path: '/race_series/:id',
-    name: 'race_series_detail',
-    component: EventDetailView,
-    children: [
-      {
-        path: '/race_series/:id/race_detail',
-        name: 'race-details',
-        component: () => import('@/views/RaceDetails'),
-       
-      },
-      {
-        path: '/race_series/:id/races',
-        name: 'races',
-        component: () => import('@/views/Races.vue'),
-       
-      },
-    ]
+    path: '/login',
+    name: 'auth-login',
+    component: () => import('@/views/Login.vue'),
+    meta: {
+      layout: 'blank',
+    },
   },
   {
     path: '*',
-    redirect: '/'
+    redirect: 'error-404',
   },
-  
 ]
 
 const router = new VueRouter({
   // mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  },
 })
+
 
 export default router

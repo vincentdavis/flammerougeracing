@@ -1,11 +1,14 @@
 <template>
   <v-menu content-class="my-menu" v-model="menu" offset-y :close-on-content-click="false">
     <template v-slot:activator="{ on, attrs }">
-      <v-icon title="Customize Columns" small v-bind="attrs" v-on="on" color="primary">mdi-table-cog</v-icon>
+      <v-btn :icon="title ? false : true"  v-bind="attrs" v-on="on">      <v-icon title="Customize Columns" small  color="primary">mdi-table-cog</v-icon>
+      <span v-if="title">{{title}}</span>
+</v-btn>
+      
     </template>
 
     <v-card elevation="0">
-      <v-card-title> Fields </v-card-title>
+      <v-card-title> {{ title ? title : 'Fields'}} </v-card-title>
       <v-divider></v-divider>
       <v-card-text class="ma-0 pa-3">
         <v-text-field v-model="search" prepend-inner-icon="mdi-magnify" dense hide-details placeholder="Search"></v-text-field>
@@ -60,6 +63,7 @@ export default {
   },
   props: {
     FieldList: [],
+    title: {default: null}
   },
   computed: {
     filteredItems() {

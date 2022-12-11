@@ -10,9 +10,10 @@ from rest_framework.viewsets import GenericViewSet
 
 from apps.events.api.pagination import StandardResultsSetPagination
 from apps.events.api.serailizers import RaceSeriesSerializers, RaceSeriesSerializersReadOnly, RacesSerializers, \
-    ZwiftResultSerializers, ZwiftResultSerializersMin, ZwiftResultMin
+    ZwiftResultSerializers, ZwiftResultSerializersMin, ZwiftResultMin, RaceSeriesSerializersWrite
 from apps.events.models import Races, RaceSeries, ZwiftResult
 from django_filters.rest_framework import DjangoFilterBackend
+from backend.helpers.Exception import exception
 
 from apps.events.zwiftAPI import ZwiftPowerAPI
 
@@ -38,6 +39,24 @@ class RaceSeriesAPI(RetrieveModelMixin, ListModelMixin, GenericViewSet):
     serializer_class = RaceSeriesSerializersReadOnly
     queryset = RaceSeries.objects.all()
 
+    def save_attachements(self, files, obj):
+        try:
+            for file in files.getlist('attachments'):
+                obj.logo = file
+                obj.save()
+        except Exception as e:
+            exception(e)
+
+    @action(detail=False, methods=['POST'])
+    def create_race_series(self, request):
+        data = request.data
+        print(request.FILES)
+        pser = RaceSeriesSerializersWrite(data=data)
+        if pser.is_valid(raise_exception=True):
+            pserobj = pser.save()
+            pserobj.save()
+            self.save_attachements(request.FILES, pserobj)
+            return Response({'message': 'Race Series "' + pserobj.name + '" Created Successfully'})
     @action(methods=['GET'], detail=True)
     def races(self, request, pk):
         obj = self.get_object()

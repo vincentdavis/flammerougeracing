@@ -4,6 +4,15 @@ import  datetime as datatimeas
 from apps.events.models import Races, RaceSeries, ZwiftResult
 
 
+class RaceSeriesSerializersWrite(serializers.ModelSerializer):
+    logo = serializers.FileField(required=False)
+    slider_logo = serializers.FileField(required=False)
+    small_logo = serializers.FileField(required=False)
+
+    class Meta:
+        model = RaceSeries
+        fields = '__all__'
+
 class RaceSeriesSerializers(serializers.ModelSerializer):
     start_time = serializers.SerializerMethodField(method_name="get_time")
     end_time = serializers.SerializerMethodField(method_name="get_time")

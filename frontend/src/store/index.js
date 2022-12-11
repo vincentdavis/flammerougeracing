@@ -1,154 +1,135 @@
+import appConfigStoreModule from '@core/@app-config/appConfigStoreModule'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import app from './app'
+import axiosIns from '@/plugins/axios'
+import { status_color, exception_rest_api_handler, extract_api_data } from '@/helper'
 
 Vue.use(Vuex)
-import axiosIns from '@/plugins/axios.js'
-
 
 export default new Vuex.Store({
   state: {
-    profile: null,
-    races: [],
-    race_loader: false,
+    Drawer: {
+      DrawerModel: false,
+      DrawerShowAppBar: false,
+      DrawerSize: '35%',
+      DrawerFormType: '',
+      DrawerForm: [],
+      DrawerFormSubmit: {},
+      DrawerLoader: true,
+      DrawerFormAPICall: false,
+      DrawerFormTitle: '',
+      DrawerExtraParam: '',
+    }, // Used to open drawer
 
-    zwift_link_modal: false
-  },
-  getters: {
-    profile: (state) => state.profile,
-    getters_zwift_link_modal: (state) => state.zwift_link_modal,
-    getters_races: (state) => state.races,
-    getters_race_loader: (state) => state.race_loader,
-
+    SecondDrawer: {
+      DrawerModel: false,
+      DrawerShowAppBar: false,
+      DrawerSize: '35%',
+      DrawerFormType: '',
+      DrawerForm: [],
+      DrawerFormSubmit: {},
+      DrawerLoader: true,
+      DrawerFormAPICall: false,
+      DrawerExtraParam: ''
+    }, // Used to open customer drawer
   },
   mutations: {
-    mutation_profile(state, data) {
-      state.profile = data
+    mutation__drawer(state, value) {
+      state.Drawer = Object.assign(state.Drawer, value)
+    },
+    utation__drawer(state, value) {
+      state.Drawer = Object.assign(state.Drawer, value)
+    },
   },
-    mutation_races(state, data) {
-      state.races = data
-  },
-    mutation_race_loader(state, data) {
-      state.race_loader = data
-  },
-  mutation_zwift_link_modal(state, data) {
-      state.zwift_link_modal = data
-  },
+  getters: {
+    Drawer: state => state.Drawer,
   },
   actions: {
-    zwift_link_modal({commit}, status){
-      commit('mutation_zwift_link_modal', status)
+    OpenDrawerOnClick({ commit }, value) {
+      commit(value.DrawerMutation, {
+        DrawerModel: true,
+        DrawerShowAppBar: value.ShowAppBarOnDrawer,
+        DrawerSize: value.DrawerSize,
+        DrawerFormType: value.DrawerFormType,
+        DrawerLoader: true,
+        DrawerActionType: value.DrawerActionType,
+        DrawerFormTitle: value.DrawerFormTitle,
+        DrawerFormSubmit: value.DrawerFormSubmit,
+        DrawerApiForm: value.DrawerApiForm,
+        DrawerShowAction: value.DrawerShowAction,
+      })
+
+      if (value && value.DrawerFormAPICall) {
+        commit(value.DrawerMutation, { DrawerLoader: true })
+        return new Promise((resolve, reject) => {
+          axiosIns.get('api/forms/get_form/?form_name=' + value.DrawerFormType+(value.DrawerExtraParam ? value.DrawerExtraParam : ''))
+            .then(data => {
+              commit(value.DrawerMutation, {
+                DrawerForm: data.data,
+                DrawerLoader: false
+              })
+
+              resolve(data)
+            })
+            .catch(err => {
+              reject(err)
+              commit(value.DrawerMutation, {
+                DrawerForm: [],
+                DrawerLoader: false
+              })
+            })
+        })
+      } else {
+        commit(value.DrawerMutation, {
+          DrawerModel: true,
+          DrawerShowAppBar: value.ShowAppBarOnDrawer,
+          DrawerSize: value.DrawerSize,
+          DrawerFormType: value.DrawerFormType,
+          DrawerLoader: false,
+        })
+      }
     },
-    API({ commit }, payload) {
-      commit
+    CloseDrawer({ commit }) {
+      commit('mutation__drawer', { DrawerLoader: false ,DrawerModel: false , DrawerForm: []})
+    },
+    CREATE_EVENT({ commit }, payload) {
+      var data = {}
+      data =  extract_api_data(payload.data ? payload.data: [])
       return new Promise((resolve, reject) => {
-        axiosIns(payload.api + payload.query_params)
+        axiosIns.post('api/race_series/'+payload.custom_action+'/', data)
           .then(data => {
+            commit('mutation__drawer', { DrawerLoader: false ,DrawerModel: false , DrawerForm: []})
+
+            resolve(data)
+
+          })
+          .catch(err => {
+            commit('mutation__drawer', { DrawerLoader: false ,DrawerModel: false , DrawerForm: []})
+
+
+            reject(err)
+          })
+      })
+    },
+    LIST_EVENT({ commit }) {
+      return new Promise((resolve, reject) => {
+        axiosIns.get('api/race_series/')
+          .then(data => {
+
             resolve(data)
           })
           .catch(err => {
             reject(err)
           })
       })
-    },
-    link_zwifit({commit}, payload){
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.post('/api/users/zwift_link/', payload)
-        .then(data => {
-          resolve(data)
-        })
-        .catch(err => {
-
-          reject(err)
-        })
-      }) 
-    },
-    get_profile({commit}){
-      commit('mutation_race_loader', true)
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.get('/api/users/me/')
-        .then(data => { commit('mutation_profile', data.data)
-          resolve(data)
-        })
-        .catch(err => {
-
-          reject(err)
-        })
-      }) 
-    },
-    get_races({commit}){
-      commit('mutation_race_loader', true)
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.get('/api/race_series/')
-        .then(data => {
-          commit('mutation_race_loader', false)
-          commit('mutation_races', data.data)
-          resolve(data)
-        })
-        .catch(err => {
-          commit('mutation_race_loader', false)
-
-          reject(err)
-        })
-      }) 
-    },
-    detail_races({commit}, query){
-      commit('mutation_race_loader', true)
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.get('/api/race_series/'+query)
-        .then(data => {
-          commit('mutation_race_loader', false)
-          resolve(data)
-        })
-        .catch(err => {
-          commit('mutation_race_loader', false)
-
-          reject(err)
-        })
-      }) 
-    },
-    racesAPI({commit}, query){
-      commit('mutation_race_loader', true)
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.get('/api/race/'+query)
-        .then(data => {
-          commit('mutation_race_loader', false)
-          resolve(data)
-        })
-        .catch(err => {
-          commit('mutation_race_loader', false)
-
-          reject(err)
-        })
-      }) 
-    },
-    zwift_resultAPI({commit}, query){
-      commit('mutation_race_loader', true)
-
-      return new Promise((resolve, reject) => {
-        commit
-        axiosIns.get('/api/zwift_result/'+query)
-        .then(data => {
-          commit('mutation_race_loader', false)
-          resolve(data)
-        })
-        .catch(err => {
-          commit('mutation_race_loader', false)
-
-          reject(err)
-        })
-      }) 
     }
-    },
+
+      
+
+  },
   modules: {
-  }
+    appConfig: appConfigStoreModule,
+    app,
+  },
 })

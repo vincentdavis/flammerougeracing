@@ -1,19 +1,22 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "baseUrl": "./",
-    "moduleResolution": "node",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  }
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "@core/*": [
+                "src/@core/*"
+            ],
+            "@themeConfig": [
+                "themeConfig.js"
+            ],
+            "@axios": [
+                "src/plugins/axios.js"
+            ],
+            "@user-variables": [
+                "src/styles/variables.scss"
+            ]
+        }
+    }
 }

@@ -1,101 +1,83 @@
 <template>
-  <v-app>
-    <v-overlay :value="main_loader" app absolute>
-      <v-progress-circular indeterminate size="25"></v-progress-circular>
-      Loading FRR
-    </v-overlay>
+  <div>
+    <v-app v-if="dialog">
+      <div class="text-center">
+        <v-dialog transition="scale-transition"  v-model="dialog" hide-overlay persistent width="300">
+          <v-card elevation="0" :loading="true">
+            <v-img src="@/assets/images/FRR.png"></v-img>
+            <!-- <v-card-text>
+              <div class="text-center mt-2">
+                <v-progress-linear rounded height="5" indeterminate></v-progress-linear>
+              </div>
+            </v-card-text> -->
+          </v-card>
+        </v-dialog>
+      </div>
+    </v-app>
 
-    <v-app-bar dense v-if="!main_loader" color="white" elevation="0" app>
-      <!-- <v-toolbar-title style="cursor:pointer" @click="$router.push({name: 'home'})">Flamme Rouge Racing</v-toolbar-title> -->
-      <v-img
-        style="cursor: pointer"
-        @click="$router.push({ name: 'home' })"
-        max-height="53"
-        max-width="250"
-        src="@/assets/FRR.png"
-      ></v-img>
-      <v-text-field
-        clearable
-        width="30"
-        color="primary"
-        class="ma-5"
-        placeholder="Search for races"
-        outlined
-        hide-details
-        rounded
-        dense
-        prepend-inner-icon="mdi-magnify"
-      ></v-text-field>
-
-      <v-spacer></v-spacer>
-      <!-- <v-btn rounded small color="primary"> Create Race</v-btn> -->
-      <profile></profile>
-    </v-app-bar>
-
-    <v-main v-if="!main_loader">
-      <!-- Zwift Validation -->
-      <v-banner v-if="!profile.zwift_id" dense v-model="v0" single-line
-        ><v-icon slot="icon" color="warning" size="36">
-          mdi-alert-circle
-        </v-icon>
-        Zwifit account not linked. Please link your zwift account to join race
-        <template v-slot:actions>
-          <v-btn
-            transition="slide-y-transition"
-            small
-            rounded
-            color="primary"
-            class="text-capitalize"
-            @click="add_zwift"
-          >
-            Link Zwift Account
-          </v-btn>
-          <v-btn small rounded color="red" @click="v0 = false" icon
-            ><v-icon>mdi-close</v-icon></v-btn
-          >
-        </template>
-      </v-banner>
-      <!-- Link Zwift Modal -->
-      <link_zwift_account></link_zwift_account>
-      
-      <transition name="scroll-x-transition" mode="out-in" appear>
+    <component v-else :is="resolveLayoutVariant" :class="`skin-variant--${appSkinVariant}`">
+      <transition :name="appRouteTransition" mode="out-in" appear>
         <router-view></router-view>
       </transition>
-    </v-main>
-  </v-app>
+    </component>
+  </div>
 </template>
 
 <script>
-import { Index } from "@/mixins/index";
-import profile from "@/components/profile.vue";
-import link_zwift_account from "@/components/link_zwift_account.vue";
+// eslint-disable-next-line object-curly-newline
+import { computed } from '@vue/composition-api'
+// eslint-disable-next-line import/no-unresolved
+import useAppConfig from '@core/@app-config/useAppConfig'
+import { useRouter } from '@core/utils'
+import { useLayout } from '@core/layouts/composable/useLayout'
+
+// Layouts
+import LayoutContentVerticalNav from '@/layouts/variants/content/vertical-nav/LayoutContentVerticalNav.vue'
+import LayoutContentHorizontalNav from '@/layouts/variants/content/horizontal-nav/LayoutContentHorizontalNav.vue'
+import LayoutBlank from '@/layouts/variants/blank/LayoutBlank.vue'
+
+// Dynamic vh
+import useDynamicVh from '@core/utils/useDynamicVh'
 
 export default {
-  mixins: [Index],
-  name: "App",
-  components: { profile, 
-  link_zwift_account 
+  components: {
+    LayoutContentVerticalNav,
+    LayoutContentHorizontalNav,
+    LayoutBlank,
   },
-  data: () => ({
-    v0: true,
-    main_loader: true,
 
-    //
-  }),
-  methods:{
-    add_zwift(){
-      this.zwift_link_modal(true)
+  data() {
+    return {
+      dialog: true,
     }
   },
   mounted() {
-    this.main_loader = true;
-    this.get_profile()
-      .then(() => {
-        this.main_loader = false;
-      })
-      .catch(() => {
-        this.main_loader = false;
-      });
+    setTimeout(() => {
+      this.dialog = false
+      this.$router.push({ name: 'home' })
+    }, 1000)
   },
-};
+  setup() {
+    const { route } = useRouter()
+    const { appContentLayoutNav, appSkinVariant, appRouteTransition } = useAppConfig()
+
+    const { handleBreakpointLayoutSwitch } = useLayout()
+    handleBreakpointLayoutSwitch()
+
+    const resolveLayoutVariant = computed(() => {
+      if (route.value.meta.layout === 'blank') return 'layout-blank'
+      if (route.value.meta.layout === 'content') return `layout-content-${appContentLayoutNav.value}-nav`
+
+      return 'layout-blank'
+    })
+
+    useDynamicVh()
+
+    return {
+      resolveLayoutVariant,
+      appSkinVariant,
+      appRouteTransition,
+    }
+  },
+}
 </script>

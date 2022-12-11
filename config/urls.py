@@ -38,6 +38,7 @@ urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
     path("api/", include("apps.events.api.router")),
+    path("api/", include("apps.Setup.rest_api.router")),
 
     # DRF auth token
     path("auth-token/", obtain_auth_token),
